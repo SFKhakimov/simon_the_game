@@ -1,19 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Simon The Game</h1>
+    <div>
+      <Game />
+      <OptionsGame />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Game from "./components/Game";
+import OptionsGame from "./components/OptionsGame";
 export default {
-  name: 'App',
+  data() {
+    return {
+      gameStarted: false,
+      round: 4,
+      randomNumberArray: [],
+    };
+  },
+  methods: {
+    randomSquares() {
+      this.randomNumberArray = [];
+      for (let i = 0; i < this.round; i++) {
+        this.randomNumberArray.push(
+          Math.round(Math.random() * (this.round - 1) + 1)
+        );
+      }
+      console.log(this.randomNumberArray);
+    },
+  },
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Game,
+    OptionsGame,
+  },
+};
 </script>
 
 <style>
@@ -23,6 +45,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: 0 auto;
   margin-top: 60px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
