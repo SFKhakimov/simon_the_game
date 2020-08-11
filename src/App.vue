@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <h1>Simon The Game</h1>
-    <div>
-      <Game />
-      <OptionsGame />
+    <div class="main">
+      <Game :speed="speed" />
+      <OptionsGame :speed="speed" @change="setSpeed" />
     </div>
   </div>
 </template>
@@ -14,20 +14,12 @@ import OptionsGame from "./components/OptionsGame";
 export default {
   data() {
     return {
-      gameStarted: false,
-      round: 4,
-      randomNumberArray: [],
+      speed: 1000,
     };
   },
   methods: {
-    randomSquares() {
-      this.randomNumberArray = [];
-      for (let i = 0; i < this.round; i++) {
-        this.randomNumberArray.push(
-          Math.round(Math.random() * (this.round - 1) + 1)
-        );
-      }
-      console.log(this.randomNumberArray);
+    setSpeed(value) {
+      this.speed = value;
     },
   },
   name: "App",
@@ -38,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -47,9 +39,17 @@ export default {
   color: #2c3e50;
   margin: 0 auto;
   margin-top: 60px;
-  max-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.main {
+  display: flex;
+  max-width: 440px;
+  justify-content: space-between;
+  @media screen and (max-width: 440px) {
+    flex-direction: column;
+  }
 }
 </style>
