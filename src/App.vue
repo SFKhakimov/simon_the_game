@@ -42,6 +42,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 440px) {
+    margin-top: 30px;
+  }
 }
 
 .main {
