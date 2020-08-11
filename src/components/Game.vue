@@ -11,7 +11,9 @@
     </ul>
     <button @click="opacityHandler()" class="game__button">Старт</button>
     <p v-if="lost === false">Раунд {{ round }}</p>
-    <p v-if="lost === true">Отлично! Вы дошшли до {{ round }} раунда. Попробуйте еще раз!</p>
+    <p v-if="lost === true">
+      Отлично! Вы дошли до {{ round }} раунда. Попробуйте еще раз!
+    </p>
   </div>
 </template>
 
